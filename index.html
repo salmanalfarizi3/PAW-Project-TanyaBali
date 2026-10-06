@@ -3,313 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page — Chatbot Pariwisata Bali</title>
-    <style>
-        :root {
-            --primary-color: #065f46;
-            --secondary-color: #059669;
-            --accent-green: #10b981;
-            --accent-red: #ef4444;
-            --bg-color: #f0fdf4;
-            --card-bg: #ffffff;
-            --text-color: #0f172a;
-            --text-muted: #475569;
-            --border-color: #e2e8f0;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding-bottom: 2rem;
-        }
-        
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2.5rem 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            color: #a7f3d0;
-            font-size: 1rem;
-        }
-
-        nav {
-            background-color: #022c22;
-            padding: 0.75rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: #f0fdf4;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.4rem 0.8rem;
-            border-radius: 0.375rem;
-            transition: background-color 0.2s;
-        }
-
-        nav a:hover {
-            background-color: var(--secondary-color);
-        }
-
-        main {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            display: grid;
-            gap: 2rem;
-        }
-
-        section {
-            background: var(--card-bg);
-            border-radius: 0.75rem;
-            padding: 2rem;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        section > header {
-            background: none;
-            color: var(--primary-color);
-            padding: 0 0 1rem 0;
-            text-align: left;
-            border-bottom: 2px solid var(--border-color);
-            margin-bottom: 1.5rem;
-            box-shadow: none;
-        }
-
-        section > header h2 {
-            font-size: 1.5rem;
-        }
-
-        article {
-            margin-bottom: 1.5rem;
-        }
-
-        article:last-child {
-            margin-bottom: 0;
-        }
-
-        article h3 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        aside.meta-info {
-            background-color: #f0fdf4;
-            padding: 1.25rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid var(--secondary-color);
-        }
-
-        aside.meta-info ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        aside.meta-info li {
-            margin-bottom: 0.35rem;
-        }
-
-        ul, ol {
-            padding-left: 1.25rem;
-            margin-top: 0.5rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        .kekuatan-list li::marker {
-            color: var(--accent-green);
-        }
-
-        .kekurangan-list li::marker {
-            color: var(--accent-red);
-        }
-
-        .member-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
-            list-style: none;
-            padding: 0;
-        }
-
-        .member-card {
-            background: var(--bg-color);
-            padding: 1.25rem;
-            border-radius: 0.5rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .member-card strong {
-            display: block;
-            color: var(--primary-color);
-            font-size: 1.05rem;
-        }
-
-        footer {
-            max-width: 1000px;
-            margin: 2rem auto 0 auto;
-            text-align: center;
-            padding: 1rem;
-            color: var(--text-muted);
-            font-size: 0.875rem;
-            border-top: 1px solid var(--border-color);
-        }
-    </style>
+    <title>Homepage — BaliBot Tourism</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Pencarian Informasi Wisata Daerah Bali menggunakan Teknologi Chatbot</h1>
-
+    
+    <header class="main-header">
+        <div class="logo">
+            <img src="assets/logo.png" alt="Logo TanyaBali" class="logo-img">
+            <h1>TanyaBali</h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="landing-page.html">Referensi Jurnal</a></li>
+                <li><a href="#fitur">Fitur Utama</a></li>
+                <li><a href="#konsultasi">Tanya Chatbot</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="#konsultasi" class="btn btn-pill">Coba Sekarang</a>
+        </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#kekuatan">Kekuatan</a></li>
-            <li><a href="#kekurangan">Kekurangan</a></li>
-            <li><a href="#anggota">Anggota Kelompok</a></li>
-        </ul>
-    </nav>
-
     <main>
+        
+        <section class="hero-section">
+            <div class="hero-watermark">BALI</div>
 
-        <section id="about">
-            <header>
-                <h2>1. About</h2>
-            </header>
-         
-            <aside class="meta-info">
-                <h3>Informasi Publikasi Jurnal</h3>
-                <ul>
-                    <li><strong>Judul Jurnal:</strong> Pencarian Informasi Wisata Daerah Bali menggunakan Teknologi Chatbot</li>
-                    <li><strong>Penulis:</strong> I Nyoman Satria Paliwahet, I Made Sukarsa, I Ketut Gede Darma Putra</li>
-                    <li><strong>Tahun Terbit:</strong> 2017</li>
-                </ul>
-            </aside>
-            
-            <article>
-                <h3>Ringkasan Singkat Isi & Topik Jurnal</h3>
-                <p>
-                    Jurnal ini membahas perancangan aplikasi <em>chatbot</em> berbasis Android untuk memudahkan wisatawan domestik dan mancanegara dalam mencari informasi pariwisata di Pulau Bali. Sistem ini diciptakan untuk mengatasi keterbatasan pencarian informasi konvensional (seperti surat kabar, majalah, dan iklan) yang tidak memungkinkan adanya interaksi tanya-jawab secara langsung. 
-                </p>
-                <p>
-                    Sistem bekerja dengan mengirimkan pertanyaan pengguna ke server menggunakan format pertukaran data JSON. Alih-alih membangun mesin kecerdasan buatan dari nol, sistem memanfaatkan metode <em>pattern-matching</em> (pencocokan pola) yang didukung oleh fitur <em>Fulltext Search Boolean Mode</em> dari basis data MySQL. Dengan menggunakan perhitungan relevansi (berbasis <em>Term Frequency - Inverse Document Frequency</em>), algoritma ini dapat menemukan data respon yang paling relevan. Pada pengujiannya, sistem berhasil menjawab dengan sesuai 19 dari total 25 pertanyaan yang diajukan.
-                </p>
-            </article>
+            <div class="hero-container">
+                <article class="hero-content">
+                    <h2>Eksplorasi Keindahan & Budaya Pulau Dewata</h2>
+                    <p>Temukan destinasi favorit, lokasi pura bersejarah, hingga kuliner khas melalui asisten cerdas berbasis chatbot 24 jam.</p>
+                    <div class="hero-actions">
+                        <a href="#konsultasi" class="btn btn-primary">Yuk Cari disini ↗</a>
+                    </div>
+                </article>
+
+                <aside class="hero-stats">
+                    <div class="stat-item">
+                        <h3>20K+</h3>
+                        <p>Wisatawan Terbantu</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>19+</h3>
+                        <p>Pola Respon Akurat</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Layanan Otomatis</p>
+                    </div>
+                </aside>
+            </div>
         </section>
 
-        <section id="kekuatan">
-            <header>
-                <h2>2. Kekuatan Jurnal</h2>
+        
+        <section id="fitur" class="features-section">
+            <header class="section-title">
+                <h2>Teknologi & Keunggulan System</h2>
+                <p>Arsitektur cerdas pencocokan pola berbasis Fulltext Search Boolean Mode</p>
             </header>
-            <article>
-                <h3>Poin-Poin Kelebihan</h3>
-                <ul class="kekuatan-list">
-                    <li>
-                        <strong>Pencarian Cepat dan Interaktif:</strong> Chatbot memberikan suasana baru dalam mencari informasi wisata yang lebih informatif, cepat, dan efisien melalui simulasi percakapan tanya-jawab secara langsung dibandingkan dengan media satu arah.
-                    </li>
-                    <li>
-                        <strong>Optimalisasi Fitur Database yang Cerdas:</strong> Sistem berhasil memanfaatkan fitur bawaan <em>Fulltext Search Boolean Mode</em> pada MySQL, memungkinkan pencocokan pola dokumen tanpa memerlukan pemrosesan bahasa alami (<em>Natural Language Processing</em>) yang kompleks, namun tetap menghasilkan relevansi data yang baik.
-                    </li>
-                    <li>
-                        <strong>Implementasi pada Perangkat Mobile:</strong> Sistem telah diimplementasikan secara praktis pada platform Android sehingga mudah diakses pengguna. Selain itu, komunikasi data memanfaatkan format JSON yang terbukti ringan saat berkomunikasi dengan server.
-                    </li>
-                </ul>
-            </article>
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Fulltext Search Boolean</h3>
+                    <p>Pencocokan kata kunci tingkat tinggi dari MySQL berbasis algoritma TF-IDF & BM25.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Respon Cepat JSON</h3>
+                    <p>Komunikasi data antara sistem dan pengguna berjalan ringan serta efisien.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">⛩️</div>
+                    <h3>Database Wisata Bali</h3>
+                    <p>Menyediakan basis data lengkap lokasi pura, pantai, destinasi alam, dan kuliner.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Interaktif & Otomatis</h3>
+                    <p>Memberikan jawaban langsung untuk pertanyaan umum wisatawan tanpa jeda.</p>
+                </article>
+            </div>
         </section>
 
-        <section id="kekurangan">
-            <header>
-                <h2>3. Kekurangan Jurnal</h2>
+      
+        <section id="konsultasi" class="form-section">
+            <header class="section-title">
+                <h2>Tanya Chatbot / Konsultasi</h2>
+                <p>Punya pertanyaan seputar wisata, pura, atau kuliner Bali? Kirimkan pertanyaanmu di bawah ini.</p>
             </header>
-            <article>
-                <h3>Kelemahan Jurnal</h3>
-                <ul class="kekurangan-list">
-                    <li>
-                        <strong>Keterbatasan Pengetahuan (Pola Manual):</strong> Chatbot sangat bergantung pada pola yang didaftarkan secara manual pada <em>database</em>. Jika pengguna memasukkan pertanyaan yang polanya belum terdaftar, chatbot akan gagal memberikan jawaban yang sesuai (seperti yang terjadi pada 6 pertanyaan dari sampel uji coba).
-                    </li>
-                    <li>
-                        <strong>Kelemahan Pemrosesan Susunan Kalimat:</strong> Metode <em>Boolean Mode</em> mencocokkan berdasarkan ketersediaan kata secara parsial. Apabila pengguna mengetik susunan kalimat yang acak (misalnya: "Kuta Pantai dimana lokasi?"), sistem akan tetap mencocokkannya secara paksa berdasarkan susunan <em>Term Frequency</em> dan berisiko memberikan respon yang tidak relevan dengan makna pertanyaan.
-                    </li>
-                </ul>
-            </article>
-        </section>
 
-        <section id="anggota">
-            <header>
-                <h2>Anggota Kelompok</h2>
-            </header>
-            <article>
-                <ul class="member-grid">
-                    <li class="member-card">
-                        <strong>Salman Alfarizi</strong>
-                        <span>NIM: 20240140057</span>
-                    </li>
-                    <li class="member-card">
-                        <strong>Fadhil Mudzaki Hartono Putra</strong>
-                        <span>NIM: 20240140063</span>
-                    </li>
-                    <li class="member-card">
-                        <strong>Ichlas Bintang Saputra</strong>
-                        <span>NIM: 20240140101</span>
-                    </li>
-                    <li class="member-card">
-                        <strong>Ahmad Rouf Fachrul Rozi</strong>
-                        <span>NIM: 20240140060</span>
-                    </li>
-                    <li class="member-card">
-                        <strong>Muhammad Akmal Maulana</strong>
-                        <span>NIM: 20240140099</span>
-                    </li>
-                    <li class="member-card">
-                        <strong>Alfian Wijayanto</strong>
-                        <span>NIM: 20240140110</span>
-                    </li>
-                    <li class="member-card">
-                        <strong>Arkan Arhab Riantono</strong>
-                        <span>NIM: 20220140161</span>
-                    </li>
-                </ul>
-            </article>
-        </section>
+            <div class="form-container">
+                <form action="#" method="POST" class="custom-form">
+                    <div class="form-group">
+                        <label for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama" name="nama" placeholder="Masukkan nama kamu..." required>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="email">Alamat Email</label>
+                        <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kategori">Kategori Pertanyaan</label>
+                        <select id="kategori" name="kategori" required>
+                            <option value="" disabled selected>Pilih kategori...</option>
+                            <option value="wisata">Destinasi Wisata</option>
+                            <option value="pura">Informasi Pura & Etika</option>
+                            <option value="kuliner">Kuliner Khas Bali</option>
+                            <option value="lainnya">Pertanyaan Umum</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pesan">Pesan / Pertanyaan</label>
+                        <textarea id="pesan" name="pesan" rows="4" placeholder="Tanyakan lokasi, tiket masuk, atau jam buka..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">Kirim Pertanyaan ↗</button>
+                </form>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Kelompok 7 — Kelas B | Pengembangan Aplikasi Web </p>
+        <p>&copy; 2026 Kelompok 7 — Kelas B | Pengembangan Aplikasi Web</p>
     </footer>
 
 </body>
