@@ -1,0 +1,152 @@
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bedah Jurnal — BaliBot Tourism</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+  
+   <header class="main-header">
+       <div class="logo">
+    <img src="assets/logo.png" alt="Logo TanyaBali" class="logo-img">
+    <h1>TanyaBali</h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="landing-page.html" class="active">Bedah Jurnal</a></li>
+                
+                <li><a href="#about">About</a></li>
+                <li><a href="#kekuatan">Kekuatan</a></li>
+                <li><a href="#kekurangan">Kekurangan</a></li>
+                <li><a href="#anggota">Anggota Kelompok</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <a href="index.html" class="btn btn-pill">Kembali ke Home</a>
+        </div>
+    </header>
+
+    
+
+    <main class="journal-page">
+        
+        <header class="section-title">
+            <h2>Bedah Jurnal Ilmiah</h2>
+            <p>Pencarian Informasi Wisata Daerah Bali menggunakan Teknologi Chatbot</p>
+        </header>
+
+       
+        <section id="about" class="glass-card">
+    <header class="card-header">
+        <h2>1. About</h2>
+    </header>
+
+    <aside class="meta-info">
+        <h3>Informasi Publikasi Jurnal</h3>
+        <ul>
+            <li><strong>Judul Jurnal:</strong> Pencarian Informasi Wisata Daerah Bali menggunakan Teknologi Chatbot</li>
+            <li><strong>Penulis:</strong> I Nyoman Satria Paliwahet, I Made Sukarsa, I Ketut Gede Darma Putra</li>
+            <li><strong>Tahun Terbit:</strong> 2017</li>
+        </ul>
+    </aside>
+
+    <article>
+        <h3>Ringkasan Singkat Isi & Topik Jurnal</h3>
+        <p>
+            Jurnal ini membahas perancangan aplikasi <em>chatbot</em> berbasis Android untuk memudahkan wisatawan domestik dan mancanegara dalam mencari informasi pariwisata di Pulau Bali. Sistem ini diciptakan untuk mengatasi keterbatasan pencarian informasi konvensional (seperti surat kabar, majalah, dan iklan) yang tidak memungkinkan adanya interaksi tanya-jawab secara langsung. 
+        </p>
+        <p>
+            Sistem bekerja dengan mengirimkan pertanyaan pengguna ke server menggunakan format pertukaran data JSON. Alih-alih membangun mesin kecerdasan buatan dari nol, sistem memanfaatkan metode <em>pattern-matching</em> (pencocokan pola) yang didukung oleh fitur <em>Fulltext Search Boolean Mode</em> dari basis data MySQL. Dengan menggunakan perhitungan relevansi (berbasis <em>Term Frequency - Inverse Document Frequency</em>), algoritma ini dapat menemukan data respon yang paling relevan. Pada pengujiannya, sistem berhasil menjawab dengan sesuai 19 dari total 25 pertanyaan yang diajukan.
+        </p>
+    </article>
+</section>
+
+        
+        <section id="kekuatan" class="glass-card">
+            <header class="card-header">
+                <h2>2. Kekuatan Jurnal</h2>
+            </header>
+            <article>
+                <h3>Poin-Poin Kelebihan</h3>
+                <ul class="kekuatan-list">
+                    <li>
+                        <strong>Pencarian Cepat dan Interaktif:</strong> Chatbot memberikan suasana baru dalam mencari informasi wisata yang lebih informatif, cepat, dan efisien melalui simulasi percakapan tanya-jawab secara langsung dibandingkan dengan media satu arah.
+                    </li>
+                    <li>
+                        <strong>Optimalisasi Fitur Database yang Cerdas:</strong> Sistem berhasil memanfaatkan fitur bawaan <em>Fulltext Search Boolean Mode</em> pada MySQL, memungkinkan pencocokan pola dokumen tanpa memerlukan pemrosesan bahasa alami (<em>Natural Language Processing</em>) yang kompleks, namun tetap menghasilkan relevansi data yang baik.
+                    </li>
+                    <li>
+                        <strong>Implementasi pada Perangkat Mobile:</strong> Sistem telah diimplementasikan secara praktis pada platform Android sehingga mudah diakses pengguna. Selain itu, komunikasi data memanfaatkan format JSON yang terbukti ringan saat berkomunikasi dengan server.
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+      
+        <section id="kekurangan" class="glass-card">
+            <header class="card-header">
+                <h2>3. Kekurangan Jurnal</h2>
+            </header>
+            <article>
+                <h3>Kelemahan Jurnal</h3>
+                <ul class="kekurangan-list">
+                    <li>
+                        <strong>Keterbatasan Pengetahuan (Pola Manual):</strong> Chatbot sangat bergantung pada pola yang didaftarkan secara manual pada <em>database</em>. Jika pengguna memasukkan pertanyaan yang polanya belum terdaftar, chatbot akan gagal memberikan jawaban yang sesuai (seperti yang terjadi pada 6 pertanyaan dari sampel uji coba).
+                    </li>
+                    <li>
+                        <strong>Kelemahan Pemrosesan Susunan Kalimat:</strong> Metode <em>Boolean Mode</em> mencocokkan berdasarkan ketersediaan kata secara parsial. Apabila pengguna mengetik susunan kalimat yang acak (misalnya: "Kuta Pantai dimana lokasi?"), sistem akan tetap mencocokkannya secara paksa berdasarkan susunan <em>Term Frequency</em> dan berisiko memberikan respon yang tidak relevan dengan makna pertanyaan.
+                    </li>
+                </ul>
+            </article>
+        </section>
+
+        
+        <section id="anggota" class="glass-card">
+            <header class="card-header">
+                <h2>4. Anggota Kelompok</h2>
+            </header>
+            <article>
+                <ul class="member-grid">
+                    <li class="member-card">
+                        <strong>Salman Alfarizi</strong>
+                        <span>NIM: 20240140057</span>
+                    </li>
+                    <li class="member-card">
+                        <strong>Fadhil Mudzaki Hartono Putra</strong>
+                        <span>NIM: 20240140063</span>
+                    </li>
+                    <li class="member-card">
+                        <strong>Ichlas Bintang Saputra</strong>
+                        <span>NIM: 20240140101</span>
+                    </li>
+                    <li class="member-card">
+                        <strong>Ahmad Rouf Fachrul Rozi</strong>
+                        <span>NIM: 20240140060</span>
+                    </li>
+                    <li class="member-card">
+                        <strong>Muhammad Akmal Maulana</strong>
+                        <span>NIM: 20240140099</span>
+                    </li>
+                    <li class="member-card">
+                        <strong>Alfian Wijayanto</strong>
+                        <span>NIM: 20240140110</span>
+                    </li>
+                    <li class="member-card">
+                        <strong>Arkan Arhab Riantono</strong>
+                        <span>NIM: 20220140161</span>
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kelompok 7 — Kelas B | Pengembangan Aplikasi Web</p>
+    </footer>
+
+</body>
+</html>
