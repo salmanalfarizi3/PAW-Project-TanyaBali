@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= title %></title>
+
+    
+    <link rel="stylesheet" href="/style.css">
+
+    
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    
+    <header class="main-header">
+
+        <div class="logo">
+            <img src="/logo.png" alt="Logo TanyaBali" class="logo-img">
+            <h1>Tanya<span>Bali</span></h1>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/referensi">Bedah Jurnal</a></li>
+                <li><a href="#destinasi">Tiket Wisata</a></li>
+                <li><a href="#chatbot">Fitur Chatbot</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-actions">
+            <a href="/referensi" class="btn btn-pill">
+                Bedah Jurnal
+            </a>
+        </div>
+
+    </header>
+
+
+    
+    <section class="hero-search-section">
+
+        <div class="hero-search-content">
+
+            <span class="hero-label">
+                <i class="fa-solid fa-location-dot"></i>
+                Jelajahi Keindahan Pulau Dewata
+            </span>
+
+            <h2>
+                Mau Berwisata ke Mana di Bali Hari Ini?
+            </h2>
+
+            <p>
+                Temukan destinasi wisata terbaik, jelajahi keindahan
+                budaya Bali, dan dapatkan informasi wisata melalui
+                TanyaBali.
+            </p>
+
+            
+            <div class="search-bar-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Cari tiket wisata, pura, atau pantai di Bali..."
+                >
+
+                <button type="button" id="searchButton">
+                    Cari
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    
+    <section class="quick-menu-container">
+
+        <div class="quick-menu-grid">
+
+            <a href="#destinasi" class="menu-item">
+                <i class="fa-solid fa-umbrella-beach"></i>
+                <span>Tiket Pantai</span>
+            </a>
+
+            <a href="#destinasi" class="menu-item">
+                <i class="fa-solid fa-place-of-worship"></i>
+                <span>Tiket Pura</span>
+            </a>
+
+            <a href="#chatbot" class="menu-item">
+                <i class="fa-solid fa-comments"></i>
+                <span>AI Chatbot</span>
+            </a>
+
+            <a href="#destinasi" class="menu-item">
+                <i class="fa-solid fa-ticket"></i>
+                <span>Semua Tiket</span>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    
+    <main class="main-container" id="destinasi">
+
+        <div class="section-header-title">
+
+            <span class="section-label">
+                PILIHAN WISATA
+            </span>
+
+            <h2>Tiket Wisata Populer di Bali</h2>
+
+            <p>
+                Temukan tiket masuk destinasi wisata favorit
+                untuk pengalaman liburan terbaik di Bali.
+            </p>
+
+        </div>
+
+
+        
+        <div class="product-grid" id="productGrid">
+
+            <% if (products && products.length > 0) { %>
+
+                <% products.forEach(product => { %>
+
+                    <div class="product-card">
+
+                        
+                        <div class="card-img-placeholder">
+
+                            <i class="fa-solid fa-ticket"></i>
+
+                            <span class="image-label">
+                                TIKET WISATA BALI
+                            </span>
+
+                        </div>
+
+
+                        
+                        <div class="card-body">
+
+                            <span class="badge">
+                                <i class="fa-solid fa-ticket"></i>
+                                Tiket Wisata
+                            </span>
+
+                            <h3>
+                                <%= product.name %>
+                            </h3>
+
+                            <p class="category">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <%= product.category %>
+                            </p>
+
+
+                            
+                            <div class="card-footer-info">
+
+                                <div class="price-container">
+
+                                    <span class="price-label">
+                                        Harga tiket
+                                    </span>
+
+                                    <span class="price">
+                                        Rp <%= Number(product.price).toLocaleString('id-ID') %>
+                                    </span>
+
+                                </div>
+
+                                <button
+                                    type="button"
+                                    class="btn-detail"
+                                    data-name="<%= product.name %>"
+                                    data-category="<%= product.category %>"
+                                    data-price="<%= product.price %>"
+                                >
+                                    Detail
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                <% }) %>
+
+            <% } else { %>
+
+                <div class="empty-products">
+                    <i class="fa-solid fa-ticket"></i>
+                    <h3>Belum Ada Tiket Wisata</h3>
+                    <p>Silakan tambahkan data tiket wisata terlebih dahulu.</p>
+                </div>
+
+            <% } %>
+
+        </div>
+
+    </main>
+
+
+    
+    <section class="chatbot-section" id="chatbot">
+
+        <div class="chatbot-content">
+
+            <div class="chatbot-icon">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+
+            <div class="chatbot-text">
+                <h2>Masih Bingung Memilih Wisata di Bali?</h2>
+
+                <p>
+                    TanyaBali siap membantu kamu menemukan informasi
+                    destinasi, budaya, dan rekomendasi wisata di Bali.
+                </p>
+            </div>
+
+            <a href="/chatbot" class="btn-chatbot">
+                <i class="fa-solid fa-comments"></i>
+                Mulai Bertanya
+            </a>
+
+        </div>
+
+    </section>
+
+
+    
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="footer-logo">
+                <i class="fa-solid fa-location-dot"></i>
+                TanyaBali
+            </div>
+
+            <p>
+                Jelajahi keindahan Pulau Dewata bersama TanyaBali.
+            </p>
+
+            <span>
+                &copy; 2026 TanyaBali — Proyek Pengembangan Aplikasi Web
+                | Kelompok 7
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    
+    <div class="modal-overlay" id="detailModal">
+
+        <div class="modal-content">
+
+            <button type="button" class="modal-close" id="closeModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-icon">
+                <i class="fa-solid fa-ticket"></i>
+            </div>
+
+            <h2 id="modalName">Nama Wisata</h2>
+
+            <p id="modalCategory">Kategori Wisata</p>
+
+            <div class="modal-price">
+                <span>Harga tiket</span>
+                <strong id="modalPrice">Rp 0</strong>
+            </div>
+
+            <p class="modal-note">
+                Informasi harga merupakan data yang tersedia
+                pada katalog TanyaBali.
+            </p>
+
+            <button type="button" class="modal-ok" id="modalOk">
+                Mengerti
+            </button>
+
+        </div>
+
+    </div>
+
+
+    
+    <script>
+
+        
+        const detailButtons = document.querySelectorAll('.btn-detail');
+
+        const detailModal = document.getElementById('detailModal');
+
+        detailButtons.forEach(button => {
+
+            button.addEventListener('click', function () {
+
+                const name = this.dataset.name;
+                const category = this.dataset.category;
+                const price = Number(this.dataset.price);
+
+                document.getElementById('modalName').textContent = name;
+
+                document.getElementById('modalCategory').textContent = category;
+
+                document.getElementById('modalPrice').textContent =
+                    'Rp ' + price.toLocaleString('id-ID');
+
+                detailModal.classList.add('show');
+
+            });
+
+        });
+
+
+        
+        function closeDetailModal() {
+            detailModal.classList.remove('show');
+        }
+
+        document.getElementById('closeModal')
+            .addEventListener('click', closeDetailModal);
+
+        document.getElementById('modalOk')
+            .addEventListener('click', closeDetailModal);
+
+        detailModal.addEventListener('click', function(event) {
+
+            if (event.target === detailModal) {
+                closeDetailModal();
+            }
+
+        });
+
+
+        
+        const searchInput = document.getElementById('searchInput');
+
+        const searchButton = document.getElementById('searchButton');
+
+        const productCards = document.querySelectorAll('.product-card');
+
+        function searchProducts() {
+
+            const keyword = searchInput.value.toLowerCase().trim();
+
+            let found = 0;
+
+            productCards.forEach(card => {
+
+                const text = card.textContent.toLowerCase();
+
+                if (text.includes(keyword)) {
+
+                    card.style.display = 'flex';
+                    found++;
+
+                } else {
+
+                    card.style.display = 'none';
+
+                }
+
+            });
+
+            let message = document.getElementById('searchMessage');
+
+            if (!message) {
+
+                message = document.createElement('p');
+
+                message.id = 'searchMessage';
+
+                message.className = 'search-message';
+
+                document.getElementById('productGrid')
+                    .before(message);
+
+            }
+
+            message.textContent = found === 0
+                ? 'Maaf, tiket wisata yang kamu cari tidak ditemukan.'
+                : '';
+
+            document.getElementById('destinasi')
+                .scrollIntoView({ behavior: 'smooth' });
+
+        }
+
+        searchButton.addEventListener('click', searchProducts);
+
+        searchInput.addEventListener('keydown', function(event) {
+
+            if (event.key === 'Enter') {
+                searchProducts();
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

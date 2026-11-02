@@ -1,0 +1,27 @@
+{
+  "name": "paw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salmanalfarizi3/PAW-Week2-Kelompok7-KelasB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/salmanalfarizi3/PAW-Week2-Kelompok7-KelasB/issues"
+  },
+  "homepage": "https://github.com/salmanalfarizi3/PAW-Week2-Kelompok7-KelasB#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.19.2"
+  }
+}
