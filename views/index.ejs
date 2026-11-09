@@ -4,24 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet">
 
     <title><%= title %></title>
 
-    
-    <link rel="stylesheet" href="/style.css">
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+          rel="stylesheet">
+
+    <!-- CSS TanyaBali -->
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
 
-    
+    <!-- HEADER -->
     <header class="main-header">
-
         <div class="logo">
             <img src="/logo.png" alt="Logo TanyaBali" class="logo-img">
             <h1>Tanya<span>Bali</span></h1>
@@ -31,7 +32,7 @@
             <ul>
                 <li><a href="/" class="active">Home</a></li>
                 <li><a href="/referensi">Bedah Jurnal</a></li>
-              <li><a href="/info-tiket">Kelola Tiket</a></li>
+                <li><a href="/info-tiket">Kelola Tiket</a></li>
                 <li><a href="#chatbot">Fitur Chatbot</a></li>
             </ul>
         </nav>
@@ -41,13 +42,11 @@
                 Bedah Jurnal
             </a>
         </div>
-
     </header>
 
 
-    
+    <!-- HERO -->
     <section class="hero-search-section">
-
         <div class="hero-search-content">
 
             <span class="hero-label">
@@ -55,9 +54,7 @@
                 Jelajahi Keindahan Pulau Dewata
             </span>
 
-            <h2>
-                Mau Berwisata ke Mana di Bali Hari Ini?
-            </h2>
+            <h2>Mau Berwisata ke Mana di Bali Hari Ini?</h2>
 
             <p>
                 Temukan destinasi wisata terbaik, jelajahi keindahan
@@ -65,9 +62,7 @@
                 TanyaBali.
             </p>
 
-            
             <div class="search-bar-box">
-
                 <i class="fa-solid fa-magnifying-glass"></i>
 
                 <input
@@ -79,17 +74,14 @@
                 <button type="button" id="searchButton">
                     Cari
                 </button>
-
             </div>
 
         </div>
-
     </section>
 
 
-    
+    <!-- QUICK MENU -->
     <section class="quick-menu-container">
-
         <div class="quick-menu-grid">
 
             <a href="#destinasi" class="menu-item">
@@ -113,18 +105,15 @@
             </a>
 
         </div>
-
     </section>
 
 
-    
+    <!-- DAFTAR PRODUK -->
     <main class="main-container" id="destinasi">
 
         <div class="section-header-title">
 
-            <span class="section-label">
-                PILIHAN WISATA
-            </span>
+            <span class="section-label">PILIHAN WISATA</span>
 
             <h2>Tiket Wisata Populer di Bali</h2>
 
@@ -136,7 +125,27 @@
         </div>
 
 
-        
+        <!-- NOTIFIKASI -->
+        <div id="notification" class="alert d-none" role="alert"></div>
+
+
+        <!-- TOMBOL TAMBAH -->
+        <div class="d-flex justify-content-end mb-4">
+            <button
+                type="button"
+                class="btn btn-success"
+                id="addProductButton"
+                data-bs-toggle="modal"
+                data-bs-target="#productModal">
+
+                <i class="fa-solid fa-plus"></i>
+                Tambah Produk
+
+            </button>
+        </div>
+
+
+        <!-- PRODUCT GRID -->
         <div class="product-grid" id="productGrid">
 
             <% if (products && products.length > 0) { %>
@@ -145,19 +154,14 @@
 
                     <div class="product-card">
 
-                        
                         <div class="card-img-placeholder">
-
                             <i class="fa-solid fa-ticket"></i>
 
                             <span class="image-label">
                                 TIKET WISATA BALI
                             </span>
-
                         </div>
 
-
-                        
                         <div class="card-body">
 
                             <span class="badge">
@@ -165,46 +169,60 @@
                                 Tiket Wisata
                             </span>
 
-                            <h3>
-                                <%= product.name %>
-                            </h3>
+                            <h3><%= product.nama %></h3>
 
                             <p class="category">
                                 <i class="fa-solid fa-location-dot"></i>
-                                <%= product.category %>
+                                <%= product.deskripsi %>
                             </p>
 
-
-                            
                             <div class="card-footer-info">
 
                                 <div class="price-container">
-
                                     <span class="price-label">
                                         Harga tiket
                                     </span>
 
                                     <span class="price">
-                                        Rp <%= Number(product.price).toLocaleString('id-ID') %>
+                                        Rp <%= Number(product.harga).toLocaleString('id-ID') %>
                                     </span>
-
                                 </div>
 
                                 <button
                                     type="button"
                                     class="btn-detail"
-                                    data-name="<%= product.name %>"
-                                    data-category="<%= product.category %>"
-                                    data-price="<%= product.price %>"
-                                >
+                                    data-id="<%= product.id %>">
+
                                     Detail
                                     <i class="fa-solid fa-arrow-right"></i>
                                 </button>
 
                             </div>
 
-                        </div>
+                            <!-- TOMBOL CRUD -->
+                            <div class="d-flex gap-2 mt-3">
 
+                                <button
+                                    type="button"
+                                    class="btn btn-warning btn-sm edit-button flex-fill"
+                                    data-id="<%= product.id %>">
+
+                                    <i class="fa-solid fa-pen"></i>
+                                    Edit
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-danger btn-sm delete-button flex-fill"
+                                    data-id="<%= product.id %>">
+
+                                    <i class="fa-solid fa-trash"></i>
+                                    Hapus
+                                </button>
+
+                            </div>
+
+                        </div>
                     </div>
 
                 <% }) %>
@@ -224,7 +242,7 @@
     </main>
 
 
-    
+    <!-- CHATBOT -->
     <section class="chatbot-section" id="chatbot">
 
         <div class="chatbot-content">
@@ -252,9 +270,8 @@
     </section>
 
 
-    
+    <!-- FOOTER -->
     <footer>
-
         <div class="footer-content">
 
             <div class="footer-logo">
@@ -272,116 +289,597 @@
             </span>
 
         </div>
-
     </footer>
 
 
-    
-    <div class="modal-overlay" id="detailModal">
+    <!-- MODAL TAMBAH / EDIT PRODUK -->
+    <div class="modal fade" id="productModal" tabindex="-1">
 
-        <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered">
 
-            <button type="button" class="modal-close" id="closeModal">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            <div class="modal-content">
 
-            <div class="modal-icon">
-                <i class="fa-solid fa-ticket"></i>
+                <div class="modal-header">
+
+                    <h5 class="modal-title" id="formTitle">
+                        Tambah Produk Wisata
+                    </h5>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <form id="productForm">
+
+                        <input type="hidden" id="productId">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nama Wisata</label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="nama"
+                                maxlength="100"
+                                placeholder="Contoh: Pantai Kuta"
+                                required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Deskripsi Wisata</label>
+
+                            <textarea
+                                class="form-control"
+                                id="deskripsi"
+                                rows="3"
+                                placeholder="Masukkan deskripsi wisata"
+                                required>
+                            </textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Harga Tiket</label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="harga"
+                                min="0"
+                                step="0.01"
+                                placeholder="Contoh: 250000"
+                                required>
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary flex-fill"
+                                id="saveButton">
+
+                                Simpan Produk
+
+                            </button>
+
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal">
+
+                                Batal
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
             </div>
-
-            <h2 id="modalName">Nama Wisata</h2>
-
-            <p id="modalCategory">Kategori Wisata</p>
-
-            <div class="modal-price">
-                <span>Harga tiket</span>
-                <strong id="modalPrice">Rp 0</strong>
-            </div>
-
-            <p class="modal-note">
-                Informasi harga merupakan data yang tersedia
-                pada katalog TanyaBali.
-            </p>
-
-            <button type="button" class="modal-ok" id="modalOk">
-                Mengerti
-            </button>
 
         </div>
 
     </div>
 
 
-    
+    <!-- MODAL DETAIL PRODUK -->
+    <div class="modal fade" id="detailModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">Detail Produk Wisata</h5>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <h4 id="modalName">Nama Wisata</h4>
+
+                    <p id="modalCategory">Deskripsi Wisata</p>
+
+                    <h5 id="modalPrice">Rp 0</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
     <script>
 
-        
-        const detailButtons = document.querySelectorAll('.btn-detail');
+        const productGrid = document.getElementById('productGrid');
+        const productForm = document.getElementById('productForm');
 
-        const detailModal = document.getElementById('detailModal');
+        const productModal = new bootstrap.Modal(
+            document.getElementById('productModal')
+        );
 
-        detailButtons.forEach(button => {
+        const detailModal = new bootstrap.Modal(
+            document.getElementById('detailModal')
+        );
 
-            button.addEventListener('click', function () {
+        const notification = document.getElementById('notification');
 
-                const name = this.dataset.name;
-                const category = this.dataset.category;
-                const price = Number(this.dataset.price);
 
-                document.getElementById('modalName').textContent = name;
+        // NOTIFIKASI
+        function showNotification(message, type = 'success') {
 
-                document.getElementById('modalCategory').textContent = category;
+            notification.className = `alert alert-${type}`;
+            notification.textContent = message;
 
-                document.getElementById('modalPrice').textContent =
-                    'Rp ' + price.toLocaleString('id-ID');
+            setTimeout(() => {
+                notification.classList.add('d-none');
+            }, 3000);
 
-                detailModal.classList.add('show');
+        }
+
+
+        // FORMAT RUPIAH
+        function formatRupiah(value) {
+
+            return 'Rp ' + Number(value).toLocaleString('id-ID');
+
+        }
+
+
+        // MENGAMBIL DATA PRODUK DARI DATABASE
+        async function loadProducts() {
+
+            try {
+
+                const response = await fetch('/api/produk');
+
+                const result = await response.json();
+
+                if (!response.ok || result.status !== 'success') {
+                    throw new Error(result.message || 'Gagal mengambil produk');
+                }
+
+                renderProducts(result.data);
+
+            } catch (error) {
+
+                console.error(error);
+
+                showNotification(error.message, 'danger');
+
+            }
+
+        }
+
+
+        // MENAMPILKAN PRODUK
+        function renderProducts(products) {
+
+            productGrid.innerHTML = '';
+
+            if (!products || products.length === 0) {
+
+                const empty = document.createElement('div');
+
+                empty.className = 'empty-products';
+
+                empty.textContent = 'Belum ada produk wisata.';
+
+                productGrid.appendChild(empty);
+
+                return;
+
+            }
+
+            products.forEach(product => {
+
+                const card = document.createElement('div');
+
+                card.className = 'product-card';
+
+                const image = document.createElement('div');
+
+                image.className = 'card-img-placeholder';
+
+                const icon = document.createElement('i');
+
+                icon.className = 'fa-solid fa-ticket';
+
+                image.appendChild(icon);
+
+                const label = document.createElement('span');
+
+                label.className = 'image-label';
+
+                label.textContent = 'TIKET WISATA BALI';
+
+                image.appendChild(label);
+
+
+                const body = document.createElement('div');
+
+                body.className = 'card-body';
+
+                const badge = document.createElement('span');
+
+                badge.className = 'badge';
+
+                badge.textContent = 'Tiket Wisata';
+
+
+                const name = document.createElement('h3');
+
+                name.textContent = product.nama;
+
+
+                const description = document.createElement('p');
+
+                description.className = 'category';
+
+                description.textContent = product.deskripsi;
+
+
+                const footer = document.createElement('div');
+
+                footer.className = 'card-footer-info';
+
+                const priceContainer = document.createElement('div');
+
+                priceContainer.className = 'price-container';
+
+                const priceLabel = document.createElement('span');
+
+                priceLabel.className = 'price-label';
+
+                priceLabel.textContent = 'Harga tiket';
+
+                const price = document.createElement('span');
+
+                price.className = 'price';
+
+                price.textContent = formatRupiah(product.harga);
+
+                priceContainer.append(priceLabel, price);
+
+
+                const detailButton = document.createElement('button');
+
+                detailButton.type = 'button';
+
+                detailButton.className = 'btn-detail';
+
+                detailButton.dataset.id = product.id;
+
+                detailButton.textContent = 'Detail';
+
+
+                footer.append(priceContainer, detailButton);
+
+
+                const actions = document.createElement('div');
+
+                actions.className = 'd-flex gap-2 mt-3';
+
+
+                const editButton = document.createElement('button');
+
+                editButton.type = 'button';
+
+                editButton.className = 'btn btn-warning btn-sm flex-fill edit-button';
+
+                editButton.dataset.id = product.id;
+
+                editButton.textContent = 'Edit';
+
+
+                const deleteButton = document.createElement('button');
+
+                deleteButton.type = 'button';
+
+                deleteButton.className = 'btn btn-danger btn-sm flex-fill delete-button';
+
+                deleteButton.dataset.id = product.id;
+
+                deleteButton.textContent = 'Hapus';
+
+
+                actions.append(editButton, deleteButton);
+
+                body.append(badge, name, description, footer, actions);
+
+                card.append(image, body);
+
+                productGrid.appendChild(card);
 
             });
 
-        });
-
-
-        
-        function closeDetailModal() {
-            detailModal.classList.remove('show');
         }
 
-        document.getElementById('closeModal')
-            .addEventListener('click', closeDetailModal);
 
-        document.getElementById('modalOk')
-            .addEventListener('click', closeDetailModal);
+        // RESET FORM
+        function resetForm() {
 
-        detailModal.addEventListener('click', function(event) {
+            productForm.reset();
 
-            if (event.target === detailModal) {
-                closeDetailModal();
+            document.getElementById('productId').value = '';
+
+        }
+
+
+        // TOMBOL TAMBAH PRODUK
+        document.getElementById('addProductButton')
+            .addEventListener('click', function() {
+
+                resetForm();
+
+                document.getElementById('formTitle').textContent =
+                    'Tambah Produk Wisata';
+
+                document.getElementById('saveButton').textContent =
+                    'Simpan Produk';
+
+            });
+
+
+        // SIMPAN / UPDATE PRODUK
+        productForm.addEventListener('submit', async function(event) {
+
+            event.preventDefault();
+
+            const id = document.getElementById('productId').value;
+
+            const data = {
+
+                nama: document.getElementById('nama').value.trim(),
+
+                deskripsi: document.getElementById('deskripsi').value.trim(),
+
+                harga: Number(document.getElementById('harga').value)
+
+            };
+
+            if (!data.nama || !data.deskripsi || data.harga < 0 ||
+                !Number.isFinite(data.harga)) {
+
+                showNotification('Periksa kembali data produk.', 'danger');
+
+                return;
+
+            }
+
+            const method = id ? 'PUT' : 'POST';
+
+            const url = id
+                ? `/api/produk/${id}`
+                : '/api/produk';
+
+            try {
+
+                const response = await fetch(url, {
+
+                    method: method,
+
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+
+                    body: JSON.stringify(data)
+
+                });
+
+                const result = await response.json();
+
+                if (!response.ok || result.status !== 'success') {
+                    throw new Error(result.message || 'Gagal menyimpan produk');
+                }
+
+                productModal.hide();
+
+                resetForm();
+
+                await loadProducts();
+
+                showNotification(result.message || 'Produk berhasil disimpan');
+
+            } catch (error) {
+
+                console.error(error);
+
+                showNotification(error.message, 'danger');
+
             }
 
         });
 
 
-        
-        const searchInput = document.getElementById('searchInput');
+        // EVENT DELEGATION: DETAIL, EDIT, DELETE
+        productGrid.addEventListener('click', async function(event) {
 
-        const searchButton = document.getElementById('searchButton');
+            const detailButton = event.target.closest('.btn-detail');
 
-        const productCards = document.querySelectorAll('.product-card');
+            const editButton = event.target.closest('.edit-button');
 
+            const deleteButton = event.target.closest('.delete-button');
+
+
+            // DETAIL PRODUK
+            if (detailButton) {
+
+                const id = detailButton.dataset.id;
+
+                try {
+
+                    const response = await fetch(`/api/produk/${id}`);
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(result.message || 'Produk tidak ditemukan');
+                    }
+
+                    const product = result.data;
+
+                    document.getElementById('modalName').textContent =
+                        product.nama;
+
+                    document.getElementById('modalCategory').textContent =
+                        product.deskripsi;
+
+                    document.getElementById('modalPrice').textContent =
+                        formatRupiah(product.harga);
+
+                    detailModal.show();
+
+                } catch (error) {
+
+                    showNotification(error.message, 'danger');
+
+                }
+
+            }
+
+
+            // EDIT PRODUK
+            if (editButton) {
+
+                const id = editButton.dataset.id;
+
+                try {
+
+                    const response = await fetch(`/api/produk/${id}`);
+
+                    const result = await response.json();
+
+                    if (!response.ok) {
+                        throw new Error(result.message || 'Produk tidak ditemukan');
+                    }
+
+                    const product = result.data;
+
+                    document.getElementById('productId').value =
+                        product.id;
+
+                    document.getElementById('nama').value =
+                        product.nama;
+
+                    document.getElementById('deskripsi').value =
+                        product.deskripsi;
+
+                    document.getElementById('harga').value =
+                        product.harga;
+
+                    document.getElementById('formTitle').textContent =
+                        'Edit Produk Wisata';
+
+                    document.getElementById('saveButton').textContent =
+                        'Simpan Perubahan';
+
+                    productModal.show();
+
+                } catch (error) {
+
+                    showNotification(error.message, 'danger');
+
+                }
+
+            }
+
+
+            // DELETE PRODUK
+            if (deleteButton) {
+
+                const id = deleteButton.dataset.id;
+
+                const konfirmasi = confirm(
+                    'Apakah kamu yakin ingin menghapus produk ini?'
+                );
+
+                if (!konfirmasi) return;
+
+                try {
+
+                    const response = await fetch(`/api/produk/${id}`, {
+
+                        method: 'DELETE'
+
+                    });
+
+                    const result = await response.json();
+
+                    if (!response.ok || result.status !== 'success') {
+                        throw new Error(result.message || 'Gagal menghapus produk');
+                    }
+
+                    await loadProducts();
+
+                    showNotification(result.message || 'Produk berhasil dihapus');
+
+                } catch (error) {
+
+                    showNotification(error.message, 'danger');
+
+                }
+
+            }
+
+        });
+
+
+        // PENCARIAN PRODUK
         function searchProducts() {
 
-            const keyword = searchInput.value.toLowerCase().trim();
+            const keyword = document.getElementById('searchInput')
+                .value.toLowerCase().trim();
+
+            const cards = document.querySelectorAll('.product-card');
 
             let found = 0;
 
-            productCards.forEach(card => {
+            cards.forEach(card => {
 
                 const text = card.textContent.toLowerCase();
 
                 if (text.includes(keyword)) {
 
-                    card.style.display = 'flex';
+                    card.style.display = '';
+
                     found++;
 
                 } else {
@@ -402,8 +900,7 @@
 
                 message.className = 'search-message';
 
-                document.getElementById('productGrid')
-                    .before(message);
+                productGrid.before(message);
 
             }
 
@@ -416,17 +913,28 @@
 
         }
 
-        searchButton.addEventListener('click', searchProducts);
 
-        searchInput.addEventListener('keydown', function(event) {
+        document.getElementById('searchButton')
+            .addEventListener('click', searchProducts);
 
-            if (event.key === 'Enter') {
-                searchProducts();
-            }
+        document.getElementById('searchInput')
+            .addEventListener('keydown', function(event) {
 
-        });
+                if (event.key === 'Enter') {
+                    searchProducts();
+                }
+
+            });
+
+
+        // MUAT ULANG PRODUK SETELAH HALAMAN DIBUKA
+        loadProducts();
 
     </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- BOOTSTRAP JAVASCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
