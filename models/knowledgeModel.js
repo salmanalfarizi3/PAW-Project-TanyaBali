@@ -1,0 +1,4 @@
+const db=require('../config/database');
+// Implementasi pencarian kata kunci PostgreSQL. Untuk MySQL FULLTEXT BOOLEAN MODE,
+// database dan query perlu dimigrasikan bersama-sama; jangan jalankan sintaks MySQL di PostgreSQL.
+exports.search=async question=>{const terms=[...new Set((question.toLowerCase().match(/[a-z0-9]{3,}/g)||[]))].filter(t=>!['yang','dan','atau','apa','dimana','untuk','dari','dengan','saya','kamu','tolong','ingin','bisa'].includes(t));if(!terms.length)return[];const clauses=terms.map((_,i)=>`(LOWER(name) LIKE $${i+1} OR LOWER(category) LIKE $${i+1} OR LOWER(COALESCE(description,'')) LIKE $${i+1})`);const values=terms.map(t=>`%${t}%`);const sql=`SELECT id,name,category,price,description FROM produk WHERE ${clauses.join(' OR ')} ORDER BY id DESC LIMIT 6`;const q=await db.query(sql,values);return q.rows;};
