@@ -1,0 +1,1 @@
+const toggle=document.getElementById('togglePassword');if(toggle){toggle.addEventListener('click',()=>{const input=document.getElementById('password');const show=input.type==='password';input.type=show?'text':'password';toggle.textContent=show?'Sembunyikan':'Lihat';});}

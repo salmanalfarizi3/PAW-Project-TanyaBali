@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .chat-workspace{max-width:1240px;margin:28px auto;padding:0 18px;display:grid;grid-template-columns:285px minmax(0,1fr);gap:18px;align-items:start}
+    .history-panel,.chat-shell{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+    .history-head{padding:19px;border-bottom:1px solid var(--line)}.history-head h2{font:700 19px 'Playfair Display',serif;color:var(--green);margin:0 0 12px}
+    .new-chat-btn{width:100%;border:0;border-radius:10px;padding:11px;background:var(--green);color:#fff;font-weight:700;font-size:12px;cursor:pointer}
+    .history-list{padding:10px;max-height:570px;overflow:auto}.history-item{display:flex;gap:5px;align-items:center;padding:8px;border-radius:10px;margin-bottom:5px}.history-item.active,.history-item:hover{background:#edf3ed}.history-open{min-width:0;flex:1;border:0;background:transparent;text-align:left;cursor:pointer;color:var(--ink);padding:4px}.history-open strong{display:block;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.history-open small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.history-action{border:0;background:transparent;color:#728177;padding:5px;cursor:pointer;border-radius:6px}.history-action:hover{background:#fff;color:var(--green)}.history-empty{padding:22px 10px;text-align:center;color:var(--muted);font-size:12px;line-height:1.7}
+    .chat-shell{min-width:0}.chat-page{min-height:0;padding:0}.chat-messages{height:490px}.chat-empty{margin:auto;text-align:center;color:var(--muted);max-width:370px;padding:35px 15px}.chat-empty strong{display:block;color:var(--green);font:700 22px 'Playfair Display',serif;margin-bottom:8px}.chat-tools{display:flex;justify-content:flex-end;padding:10px 18px 0}.chat-tools button{border:0;background:transparent;color:var(--muted);font-size:11px;cursor:pointer}
+    @media(max-width:800px){.chat-workspace{grid-template-columns:1fr}.history-list{max-height:190px}.chat-messages{height:52vh}.history-panel{order:2}.chat-shell{order:1}}
+  </style>
+</head>
+
+<body>
+<header class="site-header">
+  <a class="brand" href="/"><img src="/logo.png" alt=""><span>Tanya<span class="brand-accent">Bali</span></span></a>
+  <nav class="main-nav"><a href="/">Beranda</a><a href="/referensi">Tentang</a><a class="active" href="/chatbot">Chatbot</a></nav>
+  <div class="header-actions"><span class="user-greeting">Hai, <%= currentUser.name.split(' ')[0] %></span><form action="/logout" method="POST"><button class="btn btn-outline">Keluar</button></form></div>
+</header>
+
+<main class="chat-workspace">
+  <aside class="history-panel">
+    <div class="history-head">
+      <h2>Riwayat Percakapan</h2>
+      <button type="button" class="new-chat-btn" id="newChatBtn">＋ Chat Baru</button>
+    </div>
+    <div class="history-list" id="historyList">
+      <% if (conversations && conversations.length) { %>
+        <% conversations.forEach(item => { %>
+          <div class="history-item" data-id="<%= item.id %>">
+            <button type="button" class="history-open" data-open="<%= item.id %>">
+              <strong><%= item.title %></strong>
+              <small><%= new Date(item.updated_at).toLocaleString('id-ID') %></small>
+            </button>
+            <button type="button" class="history-action" title="Ubah judul" data-rename="<%= item.id %>">✎</button>
+            <button type="button" class="history-action" title="Hapus percakapan" data-delete="<%= item.id %>">×</button>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="history-empty" id="historyEmpty">Belum ada percakapan tersimpan.<br>Mulai chat untuk membuat riwayat.</div>
+      <% } %>
+    </div>
+  </aside>
+
+  <section class="chat-shell">
+    <header class="chat-top">
+      <div><h1>TanyaBali Assistant</h1><p>Asisten informasi wisata, pura, dan kuliner Bali</p></div>
+      <span class="chat-status">● Online</span>
+    </header>
+    <div class="chat-tools"><button type="button" id="clearViewBtn">Bersihkan tampilan chat</button></div>
+    <div class="chat-messages" id="messages" aria-live="polite">
+      <div class="chat-empty" id="chatEmpty"><strong>Selamat datang di TanyaBali!</strong>Pilih riwayat percakapan atau mulai chat baru untuk bertanya tentang wisata, budaya, dan kuliner Bali.</div>
+    </div>
+    <div class="chat-suggestions" id="suggestions">
+      <button class="suggestion">Di mana lokasi Pura Tanah Lot?</button>
+      <button class="suggestion">Kuliner khas Klungkung apa saja?</button>
+      <button class="suggestion">Wisata populer di Badung?</button>
+    </div>
+    <form class="chat-compose" id="chatForm">
+      <input id="messageInput" maxlength="1000" placeholder="Tulis pertanyaan tentang Bali..." autocomplete="off" required>
+      <button type="submit" aria-label="Kirim">↑</button>
+    </form>
+  </section>
+</main>
+<script src="/js/chatbot.js"></script>
+</body>
+</html>

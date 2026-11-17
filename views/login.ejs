@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-visual">
+      <a class="brand" href="/">
+        <img src="/logo.png" alt="">
+        <span>Tanya<span class="brand-accent">Bali</span></span>
+      </a>
+      <div>
+        <span class="eyebrow light">SELAMAT DATANG KEMBALI</span>
+        <h1>Jelajahi Bali dengan lebih mudah.</h1>
+        <p>Temukan informasi destinasi, pura, dan kuliner khas Pulau Dewata melalui TanyaBali.</p>
+      </div>
+      <small>DISCOVER BALI · ONE QUESTION AT A TIME</small>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-card">
+        <a class="back-home" href="/">← Kembali ke beranda</a>
+        <h2>Masuk akun</h2>
+        <p>Masuk untuk mulai bertanya dan menemukan informasi wisata Bali.</p>
+        
+        <% if(error){ %>
+          <div class="alert"><%= error %></div>
+        <% } %>
+
+        <form method="POST" action="/login">
+          <input type="hidden" name="next" value="<%= next %>">
+          
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" id="email" name="email" type="email" value="<%= email %>" placeholder="nama@email.com" autocomplete="email" required>
+          
+          <label class="form-label" for="password">Password</label>
+          <div style="position:relative">
+            <input class="form-control" id="password" name="password" type="password" placeholder="Masukkan password" autocomplete="current-password" required>
+            <button type="button" id="togglePassword" style="position:absolute;right:12px;top:12px;border:0;background:none;color:#286b53;cursor:pointer">Lihat</button>
+          </div>
+          
+          <button class="btn btn-primary auth-submit" type="submit">Masuk ke TanyaBali ↗</button>
+        </form>
+
+        <div class="auth-switch">Belum punya akun? <a href="/register">Daftar sekarang</a></div>
+      </div>
+    </section>
+  </main>
+  
+  <script src="/js/auth.js"></script>
+</body>
+</html>

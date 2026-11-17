@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="auth-page">
+    <section class="auth-visual">
+      <a class="brand" href="/">
+        <img src="/logo.png" alt="">
+        <span>Tanya<span class="brand-accent">Bali</span></span>
+      </a>
+      <div>
+        <span class="eyebrow light">MULAI PETUALANGANMU</span>
+        <h1>Kenali setiap sudut Pulau Dewata.</h1>
+        <p>Buat akun TanyaBali dan dapatkan pengalaman mencari informasi wisata dengan percakapan.</p>
+      </div>
+      <small>DISCOVER BALI · ONE QUESTION AT A TIME</small>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-card">
+        <a class="back-home" href="/">← Kembali ke beranda</a>
+        <h2>Buat akun</h2>
+        <p>Daftar gratis untuk mulai menggunakan TanyaBali.</p>
+        
+        <% if(error){ %>
+          <div class="alert"><%= error %></div>
+        <% } %>
+
+        <form method="POST" action="/register">
+          <label class="form-label" for="name">Nama lengkap</label>
+          <input class="form-control" id="name" name="name" value="<%= name %>" placeholder="Nama kamu" autocomplete="name" required minlength="2">
+          
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" id="email" name="email" type="email" value="<%= email %>" placeholder="nama@email.com" autocomplete="email" required>
+          
+          <label class="form-label" for="password">Password</label>
+          <div style="position:relative">
+            <input class="form-control" id="password" name="password" type="password" placeholder="Minimal 8 karakter" autocomplete="new-password" minlength="8" required>
+            <button type="button" id="togglePassword" style="position:absolute;right:12px;top:12px;border:0;background:none;color:#286b53;cursor:pointer">Lihat</button>
+          </div>
+          
+          <button class="btn btn-primary auth-submit" type="submit">Buat akun TanyaBali ↗</button>
+        </form>
+
+        <div class="auth-switch">Sudah punya akun? <a href="/login">Masuk</a></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/auth.js"></script>
+</body>
+</html>
