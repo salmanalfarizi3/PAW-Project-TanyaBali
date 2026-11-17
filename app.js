@@ -1,48 +1,22 @@
-
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
-require('dotenv').config();
-
+const session = require('express-session');
 const logger = require('./middlewares/loggerMiddleware');
 const webRoutes = require('./routes/web');
-
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-// 1. Middleware untuk membaca request
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// 2. Static files (CSS dan gambar)
-app.use(express.static(path.join(__dirname, 'css')));
-app.use(express.static(path.join(__dirname, 'assets')));
-
-// 3. Pengaturan EJS
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-// 4. Middleware Logger
+app.disable('x-powered-by');
+app.use(express.json({ limit: '20kb' }));
+app.use(express.urlencoded({ extended: true, limit: '20kb' }));
+app.use(session({ name:'tanyabali.sid', secret:process.env.SESSION_SECRET || 'development-only-change-this-secret', resave:false, saveUninitialized:false, cookie:{httpOnly:true,sameSite:'lax',secure:process.env.NODE_ENV==='production',maxAge:1000*60*60*8} }));
+app.use(express.static(path.join(__dirname,'css')));
+app.use(express.static(path.join(__dirname,'assets')));
+app.use('/js',express.static(path.join(__dirname,'public/js')));
+app.set('view engine','ejs'); app.set('views',path.join(__dirname,'views'));
 app.use(logger);
-
-// 5. Routes
-app.use('/', webRoutes);
-
-// 6. Halaman 404
-app.use((req, res) => {
-    res.status(404).send('Halaman tidak ditemukan');
-});
-
-// 7. Error handler
-app.use((err, req, res, next) => {
-    console.error('Terjadi kesalahan:', err);
-
-    res.status(500).json({
-        status: 'error',
-        message: 'Internal Server Error'
-    });
-});
-
-// 8. Jalankan server
-app.listen(PORT, () => {
-    console.log(`Server berjalan di http://localhost:${PORT}`);
-});
+app.use((req,res,next)=>{res.locals.currentUser=req.session.user||null;next();});
+app.use('/',webRoutes);
+app.use((req,res)=>res.status(404).render('error',{title:'Halaman tidak ditemukan',message:'Halaman yang kamu cari tidak tersedia.'}));
+app.use((err,req,res,next)=>{console.error(err);if(req.path.startsWith('/api/'))return res.status(500).json({status:'error',message:'Terjadi kesalahan pada server.'});res.status(500).render('error',{title:'Terjadi kesalahan',message:'Maaf, terjadi kendala. Silakan coba kembali.'});});
+app.listen(PORT,()=>console.log(`TanyaBali berjalan di http://localhost:${PORT}`));
